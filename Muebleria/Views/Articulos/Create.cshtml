@@ -1,0 +1,54 @@
+﻿@model Muebleria.Models.Articulos
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@using (Html.BeginForm("Create", "Articulos", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken();
+<div class="form-horizontal">
+    <hr />
+    <div class="form-group">
+        @Html.LabelFor(p => p.Name, htmlAttributes: new { @class = "control-label col-md-2" })
+        @Html.TextBoxFor(p => p.Name, new { @class = "form-control" })
+        @Html.ValidationMessageFor(p => p.Name)
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(p => p.Categoria.Descripcion, htmlAttributes:new { @class = "control-label col-md-2" })
+        @Html.TextBoxFor(p => p.CategoriaId, new { @class = "form-control" })
+        @*@Html.DropDownListFor(p => p.Articulos.CategoriaId, new SelectList(Model.categorias, "Id", "Descripcion"), "Seleccione una categoria", new { @class = "form-control" })*@
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(p => p.Descripcion, htmlAttributes: new { @class = "control-label col-md-2" })
+        @Html.TextBoxFor(p => p.Descripcion, new { @class = "form-control" })
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(p => p.stock, htmlAttributes: new { @class = "control-label col-md-2" })
+        @Html.TextBoxFor(p => p.stock, new { @class = "form-control" })
+    </div>
+
+
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Imagen, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            <input type="file" name="imagenArticulo" />
+        </div>
+    </div>
+
+
+
+
+
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" value="Create" class="btn btn-default" />
+        </div>
+    </div>
+</div>
+
+}
+

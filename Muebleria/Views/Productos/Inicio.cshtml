@@ -1,0 +1,62 @@
+﻿@model IEnumerable<Muebleria.Models.Articulos>
+@{
+    ViewBag.Title = "Inicio";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>productos</h2>
+
+<p>
+    @Html.ActionLink("Agregar nuevo producto", "Nuevo", new { @class = "btn btn-secundary" })
+</p>
+
+
+@foreach (var item in Model)
+{
+  
+<div class="container col-md-2" style="background-color:#000000;" >
+    @*<div class="a-fixed-left-grid">
+        <div class="a-fixed-left-grid-inner" style="padding-left:218px"></div>
+    </div>*@
+</div>
+    
+    
+    <div class="container col-md-10" style="   padding-left:30px; border-top: 1px solid #211F1F;">
+                <div class="a-fixed-left-grid">
+                             <div class="a-fixed-left-grid-inner" style="padding-left:250px">
+
+                                 <div class="a-fixed-left-grid-col a-col-left" style="width:218px; margin-left:-218px; float:left;">
+                                             <div class="row">
+                                               <img class="img-responsive img-thumbnail" width="218" height="218" src="@Url.Action("convertirImagen", "Productos", new {id = item.Id})" />
+
+                                                </div>
+                                             </div>
+                                            </div>
+                </div>
+
+
+
+                                <div class="a-fixed-left-grid-col a-col-right" style="padding-left:-2%; float:right;"bv>
+                                    <div class="a-row a-spacing-small" >
+                                        <div>
+                                                     @*@Html.ActionLink(item.Name, "Detalles", "Productos", new { id = item.id },*@ null)
+                                            <ul>
+                                                <li >@Html.DisplayFor(mitem=> item.Categoria)</li>
+                                            </ul>
+                                        </div>
+
+
+                                    <div  style="align-content:center">
+
+                                    </div>  
+                                    
+                                    <div class="col-8">
+                                        <div class="a-row a-spacing-none">
+
+                                        </div>
+                                    </div>
+                                    </div>
+                                </div>
+        </div>
+
+}

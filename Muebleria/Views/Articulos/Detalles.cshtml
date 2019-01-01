@@ -1,0 +1,39 @@
+﻿@model Muebleria.Models.Articulos
+@{
+    ViewBag.Title = "Detalles";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Detalles</h2>
+
+
+<table class="table-responsive">
+    <tr>
+        <th>@Html.DisplayNameFor(model=>model.Name)</th>
+
+
+        <th>@Html.DisplayNameFor(model=>model.Descripcion)</th>
+    </tr>
+
+
+    <tr>
+        <td>@Html.DisplayFor(item => item.Name)</td>
+        <td></td>
+
+        <td>@Html.DisplayFor(item => item.Descripcion)</td>
+        <td>@Html.DisplayFor(item => item.Name)</td>
+        <td>
+            <img width="50" height="50" src="@Url.Action("convertirImagen",
+                                      "Articulos", new {id = Model.Id})" />
+        </td>
+    </tr>
+
+</table>
+
+
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
+
+

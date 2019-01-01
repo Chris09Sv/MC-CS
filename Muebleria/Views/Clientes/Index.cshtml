@@ -1,0 +1,60 @@
+﻿@model IEnumerable<Muebleria.Models.CLientes>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Index</h2>
+
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table id="clientes" class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Name    )
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Direccion)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Telefono)
+        </th>
+       
+        <th>
+            @Html.DisplayNameFor(model => model.imagenCliente)
+        </th>
+        <th>
+            eliminar
+        </th>
+    </tr>
+
+
+</table>
+    
+@section scripts
+    {
+    <script>
+
+    $(document).ready(function () {
+        var table = $("#clientes").DataTable({
+            ajax: {
+                url: "/api/Clientes",
+                dataSrc: ""
+            },
+            columns: [
+                {
+                    data: "Name",
+                    render: function (data, type, cliente) {
+                        return "<a href='/clientes/edit/" + cliente.id + "'>" + cliente.name + "</a>";
+                    }
+                }
+            ]
+
+        });
+
+    });
+    
+</script>
+    }

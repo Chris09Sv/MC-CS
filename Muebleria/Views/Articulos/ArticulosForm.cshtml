@@ -1,0 +1,75 @@
+﻿@model Muebleria.ViewModel.ArtiulosModelView
+@{
+    /**/
+
+    ViewBag.Title = "Articulos";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@*@using (Html.BeginForm("Nuevo", "Articulos", FormMethod.Post, new { enctype = "multipart/form-data" }))*@
+
+@using (Html.BeginForm("Nuevo", "Articulos"))
+
+{
+    @*@Html.HiddenFor(model =>model.Articulos.Id)*@
+
+
+<div class="form-horizontal">
+    <hr />
+    <div class="form-group">
+        @Html.LabelFor(p => p.Articulos, htmlAttributes: new { @class = "control-label col-md-2" })
+        @Html.TextBoxFor(p => p.Articulos.Name, new { @class = "form-control" })
+        @Html.ValidationMessageFor(p => p.Articulos.Name)
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(p => p.Articulos.Name, htmlAttributes: new { @class = "control-label col-md-2" })
+        @Html.TextBoxFor(p => p.Articulos.Name, new { @class = "form-control" })
+        @Html.ValidationMessageFor(p => p.Articulos.Name)
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(p => p.Articulos.Categoria)
+        @Html.DropDownListFor(p => p.Articulos.CategoriaId, new SelectList(Model.categorias, "Id", "Descripcion"), "Seleccione una categoria", new { @class = "form-control" })
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(p => p.Articulos.Descripcion, htmlAttributes: new { @class = "control-label col-md-2" })
+        @Html.TextBoxFor(p => p.Articulos.Descripcion, new { @class = "form-control" })
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(p => p.Articulos.stock, htmlAttributes: new { @class = "control-label col-md-2" })
+        @Html.TextBoxFor(p => p.Articulos.stock, new { @class = "form-control" })
+    </div>
+
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Articulos.Imagen, htmlAttributes: new { @class = "control-label col-md-2" })
+
+        <div class="col-md-10">
+            <input type="file" name="imagenArticulo" />
+        </div>
+    </div>
+
+
+
+
+
+
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+
+            <input type="submit" value="Nuevo" class="btn btn-default" />
+
+
+        </div>
+    </div>
+
+</div>
+
+
+
+
+
+}

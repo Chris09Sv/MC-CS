@@ -1,0 +1,72 @@
+﻿@model Muebleria.ViewModel.ArtiulosModelView
+@{
+    /**/
+
+    ViewBag.Title = "Actualizar Ya";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@using (Html.BeginForm("Edit", "Articulos", FormMethod.Post, new { enctype = "multipart/form-data" }))
+
+// @using (Html.BeginForm("Nuevo", "Articulos"))
+
+{
+    @Html.AntiForgeryToken()
+
+    //    @*<h3>@Html.DisplayFor(p=>p.Titulo)</h3>*@
+
+    <div class="form-horizontal">
+        <hr />
+        <div class="form-group">
+            @Html.LabelFor(p => p.Articulos.Name, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.TextBoxFor(p => p.Articulos.Name, new { @class = "form-control" })
+            @Html.ValidationMessageFor(p => p.Articulos.Name)
+        </div>
+
+        @*<div class="form-group">
+            @Html.LabelFor(p => p.Articulos.Categoria.Descripcion)
+            @Html.DropDownListFor(p => p.Articulos.CategoriaId, new SelectList(Model.categorias, "Id", "Descripcion"), "Seleccione una categoria", new { @class = "form-control" })
+        </div>*@
+
+        <div class="form-group">
+            @Html.LabelFor(p => p.Articulos.Descripcion, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.TextBoxFor(p => p.Articulos.Descripcion, new { @class = "form-control" })
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(p => p.Articulos.stock, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.TextBoxFor(p => p.Articulos.stock, new { @class = "form-control" })
+        </div>
+
+        @*<div class="form-group">
+                @Html.LabelFor(p => p.CategoriaId, htmlAttributes: new { @class = "control-label col-md-2" })
+                @Html.TextBoxFor(p => p.CategoriaId, new { @class = "form-control" })
+            </div>*@
+
+        <div class="form-group">
+            @Html.LabelFor(p => p.Articulos.Imagen, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <input type="file" name="imagenArticulo" />
+            </div>
+        </div>
+
+
+
+
+
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+
+                <button type="submit" class="btn btn-primary">Editar</button>
+
+            </div>
+        </div>
+
+    </div>
+
+
+
+
+
+}

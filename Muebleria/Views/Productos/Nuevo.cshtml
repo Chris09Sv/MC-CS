@@ -1,0 +1,64 @@
+﻿@model Muebleria.Models.Productos
+@{
+    /**/
+
+    ViewBag.Title = "Agregar Producto";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@using (Html.BeginForm("Nuevo", "Productos", FormMethod.Post, new { enctype = "multipart/form-data" }))
+
+{
+    @Html.AntiForgeryToken()
+
+    @*<h3>@Html.DisplayFor(p=>p.Titulo)</h3>*@
+    @Html.HiddenFor(model => model.Id)
+
+    <div class="form-horizontal">
+        <div class="row">
+            <hr />
+            <div class="form-group">
+                @Html.LabelFor(p => p.Name, htmlAttributes: new { @class = "control-label col-md-2" })
+                @Html.TextBoxFor(p => p.Name, new { @class = "form-control" })
+                @Html.ValidationMessageFor(p => p.Name)
+            </div>
+            @*<div class="form-group">
+                    @Html.LabelFor(p=>p.Categoria)
+                    @Html.DropDownListFor(p=>p.Categoria,new SelectList(), "Seleccione una categoria", new {@class="form-control"})
+
+                </div>*@
+
+            <div class="form-group">
+                @Html.LabelFor(p => p.Categoria, htmlAttributes: new { @class = "control-label col-md-2" })
+                @Html.TextBoxFor(p => p.Categoria, new { @class = "form-control" })
+            </div>
+
+
+            <div class="form-group">
+                @Html.LabelFor(p => p.Descripcion, htmlAttributes: new { @class = "control-label col-md-2" })
+                @Html.TextBoxFor(p => p.Descripcion, new { @class = "form-control" })
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(p => p.stock, htmlAttributes: new { @class = "control-label col-md-2" })
+                @Html.TextBoxFor(p => p.stock, new { @class = "form-control" })
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(p => p.Imagen, htmlAttributes: new { @class = "control-label col-md-2" })
+                <input type="file" name="imagenProducto" />
+            </div>
+            <input type="submit" value="Nuevo" class="btn btn-default" />
+
+
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    @*<button type="submit" class="btn btn-primary">Save</button>*@
+
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+}

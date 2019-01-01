@@ -1,0 +1,53 @@
+﻿@model Muebleria.Models.CLientes
+@{
+    ViewBag.Title = "Detalles";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Detalles</h2>
+
+
+<div class="row">
+    <div class="column">
+        <img width="50" height="50" src="@Url.Action("convertirImagen", "Clientes", new {CodigoCliente = Model.Id})" onclick="openModal();currentSlide(1)" class="hover-shadow" />
+
+    </div>
+</div>
+<div>
+    <h4>Cliente</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Direccion)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Telefono)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Pregunta)
+        </dd>
+
+
+
+        <dt>
+            @Html.DisplayNameFor(model => model.imagenCliente)
+        </dt>
+
+        <dd>
+            <img width="50" height="50" src="@Url.Action("convertirImagen", "Clientes", new {CodigoCliente = Model.Id})" />
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
+
+

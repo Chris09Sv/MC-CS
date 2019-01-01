@@ -1,0 +1,49 @@
+﻿@model IEnumerable<Muebleria.Models.Productos>
+@{
+    ViewBag.Title = "Catalogo";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div style="padding:15px;text-align:center;">
+<h2>Catalogo</h2>
+    </div>
+<div style="overflow:auto">
+    <div class="menu1">
+        <a href="#">Muebles</a>
+        <a href="#">Electrodomesticos</a>
+        <a href="#">Decoraciones</a>
+        <a href="#">Ofertas</a>
+
+    </div>
+    </div>
+
+
+    <div class="main1">
+
+        @foreach (var item in Model)
+    {
+        <div class="container">
+            <div style="border-top:solid">
+
+
+                <div class="col-md-4">
+                    <img class="img-responsive img-thumbnail" width="218" height="218" src="@Url.Action("convertirImagen", "Productos", new {id = item.Id})" />
+
+                </div>
+                <div class="col-md-4">
+                 <div style="text-align:center">
+                    @Html.ActionLink(item.Name, "Detalles", "Productos", new { id = item.Id }, null)
+                     </div>
+                   <div class="badge">
+                    @Html.DisplayFor(mitem => item.Descripcion)
+                </div>
+                    </div>
+            </div>
+
+        </div>
+
+}
+
+    </div>
+    <div class="right1">about</div>
+

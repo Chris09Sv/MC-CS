@@ -1,0 +1,49 @@
+﻿@model Muebleria.Models.Productos
+@{
+    ViewBag.Title = "Editar";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<h3>EDITAR</h3>
+
+@using (Html.BeginForm("Editar", "Productos", FormMethod.Post, new { enctype = "multipart/form-data" }))
+
+{
+
+    @Html.AntiForgeryToken()
+
+    @Html.HiddenFor(model => model.Id)
+
+    <div class="form-group">
+
+        @Html.LabelFor(p => p.Name)
+        @Html.TextBoxFor(p => p.Name, new { @class = "form-control" })
+        @Html.ValidationMessageFor(p => p.Name)
+    </div>
+
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Categoria)
+        @Html.TextBoxFor(p => p.CategoriaId, new { @class = "form-control" })
+        @Html.ValidationMessageFor(p => p.Categoria)
+    </div>
+
+
+    <div class="form-group">
+        @Html.LabelFor(p => p.Descripcion)
+        @Html.TextBoxFor(p => p.Descripcion, new { @class = "form-control" })
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(p => p.stock)
+        @Html.TextBoxFor(p => p.stock, new { @class = "form-control" })
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(p => p.Imagen, htmlAttributes: new { @class = "control-label" })
+        <input type="file" name="imagenProducto" />
+    </div>
+
+    <button type="submit" class="btn btn-primary">Save</button>
+
+
+}
